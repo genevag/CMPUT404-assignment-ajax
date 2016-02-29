@@ -87,8 +87,12 @@ def update(entity):
     if request.method == "POST":
         myWorld.update(entity, "x", data["x"])
         myWorld.update(entity, "y", data["y"])
-        myWorld.update(entity, "colour", data["colour"])
-        myWorld.update(entity, "radius", data["radius"])
+
+        if "colour" in data.keys():
+            myWorld.update(entity, "colour", data["colour"])
+
+        if "radius" in data.keys():
+            myWorld.update(entity, "radius", data["radius"])
 
     elif request.method == "PUT":
         myWorld.set(entity, data)
